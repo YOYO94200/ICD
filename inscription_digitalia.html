@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Inscription à DigitaLÏA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            overflow: auto;
+            padding: 30px 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .optional {
+            color: #FF6F00;
+            font-size: 14px;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .progress .step-indicator {
+            width: 100%;
+            height: 5px;
+            background-color: #e0e0e0;
+            position: relative;
+        }
+        .progress .step-indicator .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #007BFF;
+            transition: width 0.3s;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        textarea {
+            resize: none;
+        }
+        .short-text {
+            height: 40px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .hidden {
+            display: none;
+        }
+        .link-wrapper {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .link-wrapper a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .link-wrapper a:hover {
+            text-decoration: underline;
+        }
+        .info-section {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .info-section h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+        .info-section p {
+            margin: 0;
+            color: #333;
+        }
+        .confirmation-container {
+            display: none;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .confirmation-container h1 {
+            color: #155724;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .confirmation-container p {
+            color: #155724;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inscription Chez DigitaLÏA</h1>
+        <form id="registrationForm">
+            <div class="progress">
+                <div class="step-indicator">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Étape 1 -->
+            <div class="step step-1 active">
+                <h2>Informations Personnelles <span class="optional">(Recommandé)</span></h2>
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="address">Adresse :</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="phone">Numéro de téléphone :</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Adresse e-mail :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="dob">Date de naissance :</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <!-- Étape 2 -->
+            <div class="step step-2">
+                <h2>Détermination Personnelle <span class="optional">(Recommandé)</span></h2>
+                <label for="goal">Objectif pro principal :</label>
+                <textarea id="goal" name="goal" class="short-text"></textarea>
+
+                <label for="motivation">Pourquoi DigitaLÏA ? :</label>
+                <textarea id="motivation" name="motivation" class="short-text"></textarea>
+
+                <label for="strength">Point fort principal :</label>
+                <textarea id="strength" name="strength" class="short-text"></textarea>
+
+                <label for="challenge">Défi majeur surmonté :</label>
+                <textarea id="challenge" name="challenge" class="short-text"></textarea>
+            </div>
+
+            <!-- Étape 3 -->
+            <div class="step step-3">
+                <h2>Formation Académique <span class="optional">(Recommandé)</span></h2>
+                <label for="degree">Diplôme obtenu :</label>
+                <input type="text" id="degree" name="degree">
+
+                <label for="institution">Institution :</label>
+                <input type="text" id="institution" name="institution">
+
+                <label for="year-graduated">Année de diplomation :</label>
+                <input type="number" id="year-graduated" name="year-graduated" min="1900" max="2099">
+
+                <label for="achievements">Réalisations :</label>
+                <textarea id="achievements" name="achievements" rows="4"></textarea>
+            </div>
+
+            <!-- Étape 4 -->
+            <div class="step step-4">
+                <h2>Motivations <span class="optional">(Recommandé)</span></h2>
+                <label for="motivation">Décrivez vos motivations :</label>
+                <textarea id="motivation" name="motivation" rows="4"></textarea>
+            </div>
+
+            <!-- Boutons de navigation -->
+            <div class="buttons">
+                <button type="button" id="prevBtn" class="hidden">Étape Précédente</button>
+                <button type="button" id="nextBtn">Prochaine Étape</button>
+                <button type="button" id="submitBtn" class="hidden">Poursuivre</button>
+            </div>
+        </form>
+
+        <!-- Section d’Assurance -->
+        <div class="info-section">
+            <h3>Assurance de Sécurité</h3>
+            <p>Nous prenons la sécurité de vos données très au sérieux. Vos informations sont stockées en toute sécurité et ne seront jamais partagées avec des tiers sans votre consentement. Vous pouvez compléter votre inscription en toute confiance.</p>
+        </div>
+
+        <div class="link-wrapper">
+            <p>Merci pour votre inscription ! Cliquez sur le lien ci-dessous pour compléter votre inscription :</p>
+            <a href="https://pay.sumup.com/b2c/QT4HQ4S4" target="_blank">Complétez votre inscription ici</a>
+        </div>
+    </div>
+
+    <!-- Page de confirmation -->
+    <div id="confirmationPage" class="confirmation-container">
+        <h1>Inscription Réussie</h1>
+        <p>Merci pour votre inscription ! Nous avons bien reçu vos informations et un conseiller vous contactera dans moins de 24 heures.</p>
+    </div>
+
+    <script>
+        const totalSteps = 4;
+        let currentStep = 1;
+        const progressBar = document.querySelector('.progress-bar');
+        const confirmationPage = document.getElementById('confirmationPage');
+
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach((stepElement, index) => {
+                stepElement.classList.toggle('active', index + 1 === step);
+            });
+            progressBar.style.width = ((step - 1) / (totalSteps - 1) * 100) + '%';
+            document.getElementById('prevBtn').classList.toggle('hidden', step === 1);
+            document.getElementById('nextBtn').classList.toggle('hidden', step === totalSteps);
+            document.getElementById('submitBtn').classList.toggle('hidden', step !== totalSteps);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            document.querySelector('.container').style.display = 'none';
+            confirmationPage.style.display = 'block';
+        });
+
+        showStep(currentStep);
+    </script>
+</body>
+</html>
